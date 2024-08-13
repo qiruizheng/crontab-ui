@@ -10,66 +10,13 @@ Crontab UI
 
 使用 Crontab UI，管理定时任务
 
-![flow](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/flow.gif)
-
-1. Easy setup. You can even import from existing crontab.
-2. Safe adding, deleting or pausing jobs. Easy to maintain hundreds of jobs.
-3. Backup your crontabs.
-4. Export crontab and deploy on other machines without much hassle.
-5. Error log support.
-6. Mailing and hooks support.
-
-Read [this](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html) to see more details.
-
-## Setup
-
-Get latest `node` from [here](https://nodejs.org/en/download/current/). Then,
-
-    npm install -g crontab-ui
-    crontab-ui
-
-If you need to set/use an alternative host, port OR base url, you may do so by setting an environment variable before starting the process:
-
-    HOST=0.0.0.0 PORT=9000 BASE_URL=/alse crontab-ui
-
-By default, db, backups and logs are stored in the installation directory. It is **recommended** that it be overriden using env variable `CRON_DB_PATH`. This is particularly helpful in case you **update** crontab-ui.
-
-    CRON_DB_PATH=/path/to/folder crontab-ui
-    
-If you need to apply basic HTTP authentication, you can set user name and password through environment variables:
-
-    BASIC_AUTH_USER=user BASIC_AUTH_PWD=SecretPassword
-    
-Also, you may have to **set permissions** for your `node_modules` folder. Refer [this](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
-
-If you need to use SSL, you can pass the private key and certificate through environment variables:
-
-    SSL_CERT=/path/to/ssl_certificate SSL_KEY=/path/to/ssl_private_key
-
-Make sure node has the correct **permissions** to read the certificate and the key.
-
-If you need to autosave your changes to crontab directly:
-
-    crontab-ui --autosave
-
-### List of ennvironment variables supported
-- HOST
-- PORT
-- BASE_URL
-- CRON_DB_PATH
-- CRON_PATH
-- BASIC_AUTH_USER, BASIC_AUTH_PWD
-- SSL_CERT, SSL_KEY 
-- ENABLE_AUTOSAVE
-
-
 ## Docker
 You can use crontab-ui with docker. You can use the prebuilt images in the [dockerhub](https://hub.docker.com/r/alseambusher/crontab-ui/tags)
 ```bash
-docker run -d -p 8000:8000 alseambusher/crontab-ui
+docker run -d -p 8000:8000 qiruizheng/crontab-ui
 ```
 
-You can also build it yourself if you want to customize, like this:
+如果你想自定义，你也可以自己构建镜像，就像这样：:
 ```bash
 git clone https://github.com/qiruizheng/crontab-ui.git
 cd crontab-ui
@@ -77,20 +24,15 @@ docker build -t qiruizheng/crontab-ui .
 docker run -d -p 8000:8000 qiruizheng/crontab-ui
 ```
 
-If you want to use it with authentication, You can pass `BASIC_AUTH_USER` and `BASIC_AUTH_PWD` as env variables
-```bash
-docker run -e BASIC_AUTH_USER=user -e BASIC_AUTH_PWD=SecretPassword -d -p 8000:8000 alseambusher/crontab-ui 
-```
-
-You can also mount a folder to store the db and logs.
+您还可以挂载一个文件夹来存储数据库和日志。
 ```bash
 mkdir -p crontabs/logs
-docker run --mount type=bind,source="$(pwd)"/crontabs/,target=/crontab-ui/crontabs/ -d -p 8000:8000 alseambusher/crontab-ui
+docker run --mount type=bind,source="$(pwd)"/crontabs/,target=/crontab-ui/crontabs/ -d -p 8000:8000 qiruizheng/crontab-ui
 ```
 
-If you are looking to modify the host's crontab, you would have to mount the crontab folder of your host to that of the container. 
+如果要修改主机的 crontab，则必须将主机的crontab 文件夹挂载到容器的文件夹
 ```bash
-# On Ubuntu, it can look something like this and /etc/cron.d/root is used
+# 在 Ubuntu 上，它可能看起来像这样，并使用/etc/cron.d
 docker run -d -p 8000:8000 -v /etc/cron.d:/etc/crontabs alseambusher/crontab-ui
 ```
 
