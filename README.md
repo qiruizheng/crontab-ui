@@ -71,10 +71,10 @@ docker run -d -p 8000:8000 alseambusher/crontab-ui
 
 You can also build it yourself if you want to customize, like this:
 ```bash
-git clone https://github.com/alseambusher/crontab-ui.git
+git clone https://github.com/qiruizheng/crontab-ui.git
 cd crontab-ui
-docker build -t alseambusher/crontab-ui .
-docker run -d -p 8000:8000 alseambusher/crontab-ui
+docker build -t qiruizheng/crontab-ui .
+docker run -d -p 8000:8000 qiruizheng/crontab-ui
 ```
 
 If you want to use it with authentication, You can pass `BASIC_AUTH_USER` and `BASIC_AUTH_PWD` as env variables
