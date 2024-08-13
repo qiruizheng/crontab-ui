@@ -28,16 +28,16 @@
 		<label for="env_vars">Environment Variables:</label>
 		<textarea class="form-control" rows="3" id="env_vars" placeholder="# Please set PATH, MAILTO, HOME... here"></textarea>
 	</div>
-	<a class="btn btn-primary" onclick="newJob();"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> New</a>
-	<a class="btn btn-info" onclick="doBackup();"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Backup</a>
+	<a class="btn btn-primary" onclick="newJob();"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> 新建</a>
+	<a class="btn btn-info" onclick="doBackup();"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> 备份</a>
 	<form id="import_form" enctype="multipart/form-data" action="<%= JSON.parse(routes).import %>" method="post" style="display:none">
 		<input type="file" id="import_file" name="import_file" onchange="$('#import_form').submit()"/>
 	</form>
-	<a class="btn btn-warning" onclick="import_db()"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> Import</a>
-	<a class="btn btn-warning" href="<%= JSON.parse(routes).export %>"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Export</a>
-	<!--<a class="btn btn-info" onclick="import_crontab()"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> Import from crontab</a>-->
-	<a class="btn btn-success" onclick="getCrontab();"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Get from crontab</a>
-	<a class="btn btn-success" onclick="setCrontab();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save to crontab</a>
+	<a class="btn btn-warning" onclick="import_db()"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> 导入</a>
+	<a class="btn btn-warning" href="<%= JSON.parse(routes).export %>"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 导出</a>
+	<!--<a class="btn btn-info" onclick="import_crontab()"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> 从crontab 导入</a>-->
+	<a class="btn btn-success" onclick="getCrontab();"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>从crontab 获取</a>
+	<a class="btn btn-success" onclick="setCrontab();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>保存到crontab</a>
 	<br/>
 	<br/>
 
@@ -45,10 +45,10 @@
 		<thead>
 	<tr>
 		<th>#</th>
-		<th>Name</th>
-		<th>Job</th>
-		<th>Time</th>
-		<th>Last Modified</th>
+		<th>名称</th>
+		<th>任务</th>
+		<th>时间</th>
+		<th>上次修改时间</th>
 		<th></th>
 	</tr>
 </thead>
@@ -99,11 +99,11 @@
 					<a class="btn btn-primary btn-danger" data-toggle="tooltip" data-placement="left" title="stderr" href="<%= JSON.parse(routes).logger + '?id=' + crontab._id %>" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
 					<a class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="stdout" href="<%= JSON.parse(routes).stdout + '?id=' + crontab._id %>" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
 			<% } %>
-					<a class="btn btn-info" onclick="runJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run now</a>
-					<a class="btn btn-primary" onclick="editJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
-					<a class="btn btn-info" onclick="stopJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Disable</a>
+					<a class="btn btn-info" onclick="runJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>现在运行</a>
+					<a class="btn btn-primary" onclick="editJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</a>
+					<a class="btn btn-info" onclick="stopJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>禁用</a>
 		<% } else { %>
-					<a class="btn btn-info" onclick="startJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Enable</a>
+					<a class="btn btn-info" onclick="startJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>启用</a>
 		<% } %>
 					<a class="btn btn-danger" onclick="deleteJob('<%= crontab._id %>')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 				</td>
