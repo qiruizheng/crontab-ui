@@ -1,44 +1,35 @@
-# 使用 Alpine 镜像  
-FROM alpine  
+# docker run -d -p 8000:8000 qiruizheng/crontab-ui
+FROM alpine
 
-# 环境变量  
-ENV CRON_PATH=/etc/crontabs  
-ENV HOST=0.0.0.0  
-ENV PORT=8000  
-ENV CRON_IN_DOCKER=true  
+ENV   CRON_PATH=/etc/crontabs
 
-# 创建目录和文件  
-RUN mkdir /crontab-ui; touch $CRON_PATH/root; chmod +x $CRON_PATH/root  
+RUN   mkdir /crontab-ui; touch $CRON_PATH/root; chmod +x $CRON_PATH/root
 
-# 设置工作目录  
-WORKDIR /crontab-ui  
+WORKDIR /crontab-ui
 
-# 标签信息  
-LABEL maintainer="@qiruizheng"  
-LABEL description="Crontab-UI docker"  
+LABEL maintainer="@qiruizheng"
+LABEL description="Crontab-UI docker"
 
-# 安装必要的包  
-RUN apk --no-cache add \
+RUN   apk --no-cache add \
       wget \
       curl \
       nodejs \
       npm \
       supervisor \
-      tzdata \
-      openntpd  
+      tzdata
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo "Asia/Shanghai" > /etc/timezone
+COPY supervisord.conf /etc/supervisord.conf
+COPY . /crontab-ui
 
-# 设置时区为 UTC+8  
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone  
+RUN   npm install
 
-# 拷贝配置文件  
-COPY supervisord.conf /etc/supervisord.conf  
-COPY . /crontab-ui  
+ENV   HOST=0.0.0.0
 
-# 安装 npm 依赖  
-RUN npm install  
+ENV   PORT=8000
 
-# 开放端口  
-EXPOSE $PORT  
+ENV   CRON_IN_DOCKER=true
 
-# 启动 supervisord 和 ntpd  
-CMD ["sh", "-c", "ntpd -d && supervisord -c /etc/supervisord.conf"]
+EXPOSE $PORT
+
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
