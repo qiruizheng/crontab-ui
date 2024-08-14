@@ -258,10 +258,6 @@ function setMailConfig(a){
 	});
 }
 
-function setHookConfig(a){
-	messageBox("<p>Coming Soon</p>", "Hooks", null, null, null);
-}
-
 // script corresponding to job popup management
 function job_string(){
 	$("#job-string").val(schedule + " " + job_command);
