@@ -11,7 +11,7 @@
 	<input type='text' class='form-control' id='job-name'/><br />
 	<label>命令</label>
 	<input type='text' class='form-control' id='job-command' onkeyup="job_command = $(this).val(); job_string();"/><br />
-	<label>Quick Schedule</label><br />
+	<label>快速设置</label><br />
 	<a class="btn btn-primary" onclick="schedule = '@reboot'; job_string();">启动时</a>
 	<a class="btn btn-primary" onclick="schedule = '@hourly'; job_string();">每小时</a>
 	<a class="btn btn-primary" onclick="schedule = '@daily'; job_string();">每天</a>
