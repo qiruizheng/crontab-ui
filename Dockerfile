@@ -1,4 +1,4 @@
-# docker run -d -p 8000:8000 alseambusher/crontab-ui
+# docker run -d -p 8000:8000 qiruizheng/crontab-ui
 FROM alpine
 
 ENV   CRON_PATH=/etc/crontabs
