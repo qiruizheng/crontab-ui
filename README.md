@@ -1,13 +1,6 @@
 Crontab UI
 ==========
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U8328Q7VFZMTS)
-[![npm](https://img.shields.io/npm/v/crontab-ui.svg?style=flat-square)](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-[![npm](https://img.shields.io/npm/dt/crontab-ui.svg?style=flat-square)](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-[![npm](https://img.shields.io/npm/dm/crontab-ui.svg?style=flat-square)](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-[![npm](https://img.shields.io/docker/pulls/alseambusher/crontab-ui.svg?style=flat-square)](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-[![npm](https://img.shields.io/npm/l/crontab-ui.svg?style=flat-square)](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-
 使用 Crontab UI，管理定时任务
 
 ## Docker
@@ -37,46 +30,37 @@ docker run -d -p 8000:8000 -v /etc/cron.d:/etc/crontabs alseambusher/crontab-ui
 ```
 
     
-## Resources
+## 资源
 
-* [Full usage details](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
-* [Issues](https://github.com/alseambusher/crontab-ui/blob/master/README/issues.md)
-* [Setup Mailing after execution](https://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html)
-* [Integration with nginx and authentication](https://github.com/alseambusher/crontab-ui/blob/master/README/nginx.md)
-* [Setup on Raspberry pi](https://lifepluslinux.blogspot.com/2017/03/setting-up-crontab-ui-on-raspberry-pi.html)
+* [完整的使用情况详细信息](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
+* [问题](https://github.com/alseambusher/crontab-ui/blob/master/README/issues.md)
+* [执行后设置邮件](https://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html)
+* [与nginx和身份验证集成](https://github.com/alseambusher/crontab-ui/blob/master/README/nginx.md)
 
-### Adding, deleting, pausing and resuming jobs.
+### 新增、删除、暂停和恢复任务.
 
-Once setup Crontab UI provides you with a web interface using which you can manage all the jobs without much hassle.
+设置完成后，Crontab UI 会为您提供一个 Web 界面，您可以使用它轻松管理所有工作
 
 ![basic](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/main.png)
 
-### Import from existing crontab
+### 从现有crontab 导入
 
-Import from existing crontab file automatically.
+自动从现有 crontab 文件导入.
 ![import](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/import.gif)
 
-### Backup and restore crontab
+### 备份和恢复crontab
 
-Keep backups of your crontab in case you mess up.
+保留crontab的备份，以防你搞砸了.
 ![backup](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/backup.png)
 
-### Export and import crontab on multiple instances of Crontab UI.
+### 在 Crontab UI 的多个实例上导出和导入 crontab.
 
-If you want to run the same jobs on multiple machines simply export from one instance and import the same on the other. No SSH, No copy paste!
+如果要在多台计算机上运行相同的任务，只需从一个实例导出，然后在另一个实例上导入相同的任务。没有SSH，没有复制粘贴！
 
 ![export](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/import_db.png)
 
-But make sure to take a backup before importing.
+但请确保在导入之前进行备份
 
-### Separate error log support for every job
+### 为每个任务提供单独的错误日志支持
 ![logs](https://github.com/alseambusher/crontab-ui/raw/gh-pages/screenshots/log.gif)
 
-### Donate
-Like the project? [Buy me a coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U8328Q7VFZMTS)!
-
-### Contribute
-Fork Crontab UI and contribute to it. Pull requests are encouraged.
-
-### License
-[MIT](LICENSE.md)
