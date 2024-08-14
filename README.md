@@ -26,7 +26,7 @@ docker run --mount type=bind,source="$(pwd)"/crontabs/,target=/crontab-ui/cronta
 如果要修改主机的 crontab，则必须将主机的crontab 文件夹挂载到容器的文件夹
 ```bash
 # 在 Ubuntu 上，它可能看起来像这样，并使用/etc/cron.d
-docker run -d -p 8000:8000 -v /etc/cron.d:/etc/crontabs alseambusher/crontab-ui
+docker run -d -p 8000:8000 -v /etc/cron.d:/etc/crontabs qiruizheng/crontab-ui
 ```
 
     
