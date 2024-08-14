@@ -1,4 +1,4 @@
-Crontab UI
+Crontab UI（汉化）
 ==========
 
 使用 Crontab UI，管理定时任务
