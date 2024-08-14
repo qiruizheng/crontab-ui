@@ -4,7 +4,7 @@ Crontab UI
 使用 Crontab UI，管理定时任务
 
 ## Docker
-You can use crontab-ui with docker. You can use the prebuilt images in the [dockerhub](https://hub.docker.com/r/alseambusher/crontab-ui/tags)
+您可以将 crontab-ui 与 docker 一起使用。您可以在 dockerhub 中使用预构建的镜像[dockerhub](https://hub.docker.com/r/qiruizheng/crontab-ui/tags)
 ```bash
 docker run -d -p 8000:8000 qiruizheng/crontab-ui
 ```
