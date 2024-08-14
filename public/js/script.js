@@ -9,8 +9,8 @@ function infoMessageBox(message, title){
 // like info, but for errors.
 function errorMessageBox(message) {
 	var msg =
-		"Operation failed: " + message + ". " +
-		"Please see error log for details.";
+		"操作失败: " + message + ". " +
+		"有关详细信息，请参阅错误日志。";
 	infoMessageBox(msg, "Error");
 }
 // modal with full control
@@ -32,7 +32,7 @@ var job_command = "";
 
 function deleteJob(_id){
 	// TODO fix this. pass callback properly
-	messageBox("<p> Do you want to delete this Job? </p>", "Confirm delete", null, null, function(){
+	messageBox("<p>是否删除此任务? </p>", "确认删除", null, null, function(){
 		$.post(routes.remove, {_id: _id}, function(){
 			location.reload();
 		});
@@ -40,7 +40,7 @@ function deleteJob(_id){
 }
 
 function stopJob(_id){
-	messageBox("<p> Do you want to stop this Job? </p>", "Confirm stop job", null, null, function(){
+	messageBox("<p>是否停止此任务? </p>", "确认停止", null, null, function(){
 		$.post(routes.stop, {_id: _id}, function(){
 			location.reload();
 		});
@@ -48,7 +48,7 @@ function stopJob(_id){
 }
 
 function startJob(_id){
-	messageBox("<p> Do you want to start this Job? </p>", "Confirm start job", null, null, function(){
+	messageBox("<p>是否开始此任务? </p>", "确认开始", null, null, function(){
 		$.post(routes.start, {_id: _id}, function(){
 			location.reload();
 		});
@@ -56,7 +56,7 @@ function startJob(_id){
 }
 
 function runJob(_id){
-	messageBox("<p> Do you want to run this Job? </p>", "Confirm run job", null, null, function(){
+	messageBox("<p>是否运行此任务? </p>", "确认运行", null, null, function(){
 		$.post(routes.run, {_id: _id}, function(){
 			location.reload();
 		});
@@ -65,22 +65,22 @@ function runJob(_id){
 }
 
 function setCrontab(){
-	messageBox("<p> Do you want to set the crontab file? </p>", "Confirm crontab setup", null, null, function(){
+	messageBox("<p> 是否要设置crontab 文件? </p>", "确认crontab设置", null, null, function(){
 		$.get(routes.crontab, { "env_vars": $("#env_vars").val() }, function(){
 			// TODO show only if success
-			infoMessageBox("Successfuly set crontab file!","Information");
+			infoMessageBox("成功设置crontab 文件!","信息");
 			location.reload();
 		}).fail(function(response) {
-			errorMessageBox(response.statusText,"Error");
+			errorMessageBox(response.statusText,"错误");
 		});
 	});
 }
 
 function getCrontab(){
-	messageBox("<p> Do you want to get the crontab file? <br /> <b style='color:red'>NOTE: It is recommended to take a backup before this.</b> And refresh the page after this.</p>", "Confirm crontab retrieval", null, null, function(){
+	messageBox("<p> 是否要获取crontab 文件? <br /> <b style='color:red'>NOTE: 建议在此之前进行备份.</b> 并在此之后刷新页面.</p>", "确认获取crontab", null, null, function(){
 		$.get(routes.import_crontab, { "env_vars": $("#env_vars").val() }, function(){
 			// TODO show only if success
-			infoMessageBox("Successfuly got the crontab file!","Information");
+			infoMessageBox("成功获取了crontab 文件!","信息");
 			location.reload();
 		});
 	});
@@ -168,7 +168,7 @@ function doBackup(){
 }
 
 function delete_backup(db_name){
-	messageBox("<p> Do you want to delete this backup? </p>", "Confirm delete", null, null, function(){
+	messageBox("<p> 是否删除此备份? </p>", "确认删除", null, null, function(){
 		$.get(routes.delete_backup, {db: db_name}, function(){
 			location = routes.root;
 		});
@@ -176,7 +176,7 @@ function delete_backup(db_name){
 }
 
 function restore_backup(db_name){
-	messageBox("<p> Do you want to restore this backup? </p>", "Confirm restore", null, null, function(){
+	messageBox("<p> 是否要还原此备份? </p>", "确认还原", null, null, function(){
 		$.get(routes.restore_backup, {db: db_name}, function(){
 			location = routes.root;
 		});
@@ -184,7 +184,7 @@ function restore_backup(db_name){
 }
 
 function import_db(){
-	messageBox("<p> Do you want to import crontab?<br /> <b style='color:red'>NOTE: It is recommended to take a backup before this.</b> </p>", "Confirm import from crontab", null, null, function(){
+	messageBox("<p>是否要导入crontab?<br /> <b style='color:red'>NOTE: 建议在此之前进行备份.</b> </p>", "确认从crontab 导入", null, null, function(){
 		$('#import_file').click();
 	});
 }
@@ -193,7 +193,7 @@ function setMailConfig(a){
 	let data = JSON.parse(a.getAttribute("data-json"));
 	let container = document.createElement("div");
 
-	let message = "<p>This is based on nodemailer. Refer <a href='http://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html'>this</a> for more details.</p>";
+	let message = "<p>这是基于nodemailer 的. Refer <a href='http://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html'>this</a> for more details.</p>";
 	container.innerHTML += message;
 
 	let transporterLabel = document.createElement("label");
@@ -212,7 +212,7 @@ function setMailConfig(a){
 	container.innerHTML += "<br/>";
 
 	let mailOptionsLabel = document.createElement("label");
-	mailOptionsLabel.innerHTML = "Mail Config";
+	mailOptionsLabel.innerHTML = "Mail配置";
 	let mailOptionsInput = document.createElement("textarea");
 	mailOptionsInput.setAttribute("placeholder", JSON.stringify(config.mailOptions, null, 2));
 	mailOptionsInput.className = "form-control";
