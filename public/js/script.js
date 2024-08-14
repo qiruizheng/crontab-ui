@@ -160,7 +160,7 @@ function newJob(){
 }
 
 function doBackup(){
-	messageBox("<p> Do you want to take backup? </p>", "Confirm backup", null, null, function(){
+	messageBox("<p>是否要进行备份? </p>", "确认备份", null, null, function(){
 		$.get(routes.backup, {}, function(){
 			location.reload();
 		});
