@@ -193,7 +193,7 @@ function setMailConfig(a){
 	let data = JSON.parse(a.getAttribute("data-json"));
 	let container = document.createElement("div");
 
-	let message = "<p>这是基于nodemailer 的. Refer <a href='http://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html'>this</a> for more details.</p>";
+	let message = "<p>这是基于nodemailer 的. 有关更多详细信息，请参阅<a href='http://lifepluslinux.blogspot.com/2017/03/introducing-mailing-in-crontab-ui.html'>此内容</a></p>";
 	container.innerHTML += message;
 
 	let transporterLabel = document.createElement("label");
