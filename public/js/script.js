@@ -227,7 +227,7 @@ function setMailConfig(a){
 
 	let button = document.createElement("a");
 	button.className = "btn btn-primary btn-small";
-	button.innerHTML = "Use Defaults";
+	button.innerHTML = "使用默认";
 	button.onclick = function(){
 		document.getElementById("transporterInput").value = config.transporterStr;
 		document.getElementById("mailOptionsInput").innerHTML = JSON.stringify(config.mailOptions, null, 2);
@@ -236,14 +236,14 @@ function setMailConfig(a){
 
 	let buttonClear = document.createElement("a");
 	buttonClear.className = "btn btn-default btn-small";
-	buttonClear.innerHTML = "Clear";
+	buttonClear.innerHTML = "清除";
 	buttonClear.onclick = function(){
 		document.getElementById("transporterInput").value = "";
 		document.getElementById("mailOptionsInput").innerHTML = "";
 	};
 	container.appendChild(buttonClear);
 
-	messageBox(container, "Mailing", null, null, function(){
+	messageBox(container, "邮件", null, null, function(){
 		let transporterStr = document.getElementById("transporterInput").value;
 		let mailOptions;
 		try{
